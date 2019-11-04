@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <modules>
+        <Tsg_AutoLoadImage>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Tsg_AutoLoadImage>
+    </modules>
+</config>
