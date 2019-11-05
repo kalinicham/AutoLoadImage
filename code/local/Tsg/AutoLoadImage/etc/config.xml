@@ -30,25 +30,6 @@
                 </entities>
             </import_file_resource>
         </models>
-
-        <!--<models>
-            <kalinich_action>
-                <class>Kalinich_Action_Model</class>
-                <resourceModel>kalinich_action_resource</resourceModel>
-            </kalinich_action>
-            <kalinich_action_resource>
-                <class>Kalinich_Action_Model_Resource</class>
-                <entities>
-                    <post_action>
-                        <table>kalinich_action</table>
-                    </post_action>
-                    <post_action_product>
-                        <table>kalinich_action_product</table>
-                    </post_action_product>
-                </entities>
-            </kalinich_action_resource>
-        </models>-->
-
         <resources>
             <tsg_autoloadimage_setup>
                 <setup>

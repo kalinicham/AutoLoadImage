@@ -10,10 +10,15 @@ class Tsg_AutoLoadImage_Adminhtml_Tsg_ImagesController extends Mage_Adminhtml_Co
         $this->renderLayout();
     }
 
-    public function saveAction()
+    public function startAction()
     {
-        $param = $this->getRequest()->getParams('filename');
-
+        $data = $this->getRequest()->getPost();
+         if ($data) {
+             $importModel = Mage::getModel('tsg_autoloadimage/import');
+             $importModel->importSource();
+         } else {
+             $this->_redirectReferer();
+         }
     }
 
 }

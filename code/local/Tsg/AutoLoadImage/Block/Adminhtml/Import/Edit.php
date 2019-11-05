@@ -2,21 +2,33 @@
 
 class Tsg_AutoLoadImage_Block_Adminhtml_Import_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
 {
-    protected $_headerText = 'Import Image';
-    protected $_blockGroup = 'tsg_autoloadimage';
-    protected $_controller = 'adminhtml_import';
-
+     /**
+     * Constructor
+     *
+     * @return void
+     */
     public function __construct()
     {
         parent::__construct();
 
-        $this->_removeButton('delete');
-        $this->_removeButton('reset');
+        $this->_removeButton('delete')
+            ->_removeButton('reset')
+            ->_updateButton('save','label', $this->__('Import Data'))
+            ->_updateButton('save', 'id', 'upload_button');
     }
 
-    public function getFormActionUrl()
+
+    protected function _construct()
     {
-        return $this->getUrl('*/tsg_images/save');
+        parent::_construct();
+
+        $this->_objectId    = 'import_id';
+        $this->_blockGroup  = 'tsg_autoloadimage';
+        $this->_controller  = 'adminhtml_import';
     }
 
+    public function getHeaderText()
+    {
+        return Mage::helper('tsg_autoloadimage')->__('Import Image');
+    }
 }

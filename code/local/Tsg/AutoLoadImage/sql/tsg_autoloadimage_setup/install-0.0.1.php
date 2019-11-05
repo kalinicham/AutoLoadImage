@@ -14,12 +14,18 @@ $table = $installer->getConnection()->newTable($tableName)
     ->addColumn('status',Varien_Db_Ddl_Table::TYPE_INTEGER,null,array(
         'nullable'  =>  false,
         'default'   =>  0
-    ),'Enabled/Disable Action')
+    ),'Status load')
+    ->addColumn('sku',Varien_Db_Ddl_Table::TYPE_VARCHAR,255,array(
+        'nullable'  =>  false,
+        'default'   =>  0
+    ),'Sku')
     ->addColumn('image_url',Varien_Db_Ddl_Table::TYPE_VARCHAR,255,array(
         'nullable'  =>  false,
+        'default'   =>  null
     ),'Image url')
     ->addColumn('start_datetime',Varien_Db_Ddl_Table::TYPE_DATETIME,null,array(
         'nullable'  =>  false,
+        'default'   =>  null
     ),'Start data_time upload')
     ->addColumn('end_datetime',Varien_Db_Ddl_Table::TYPE_DATETIME,null,array(
         'nullable'  =>  true,
