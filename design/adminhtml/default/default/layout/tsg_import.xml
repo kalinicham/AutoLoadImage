@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout>
+    <adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>Import Image</name>
+                <block>tsg_autoloadimage/adminhtml_catalog_product_tab</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+
+    <adminhtml_catalog_product_import>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="tsg_autoloadimage/adminhtml_catalog_product_tab_import" name="admin.product.import.image"/>
+        </block>
+    </adminhtml_catalog_product_import>
+
+</layout>

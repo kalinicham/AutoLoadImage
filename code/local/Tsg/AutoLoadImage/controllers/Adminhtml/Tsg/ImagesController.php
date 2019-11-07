@@ -2,6 +2,12 @@
 
 class Tsg_AutoLoadImage_Adminhtml_Tsg_ImagesController extends Mage_Adminhtml_Controller_Action
 {
+
+    public function indexAction()
+    {
+        $this->_redirect('*/catalog_product/index');
+    }
+
     public function importAction()
     {
         $this->loadLayout();
@@ -15,10 +21,14 @@ class Tsg_AutoLoadImage_Adminhtml_Tsg_ImagesController extends Mage_Adminhtml_Co
         $data = $this->getRequest()->getPost();
          if ($data) {
              $importModel = Mage::getModel('tsg_autoloadimage/import');
-             $importModel->importSource();
+             try {
+                 $importModel->importSource();
+             } catch (Exception $e) {
+                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+             }
+             $this->_redirectReferer();
          } else {
              $this->_redirectReferer();
          }
     }
-
 }

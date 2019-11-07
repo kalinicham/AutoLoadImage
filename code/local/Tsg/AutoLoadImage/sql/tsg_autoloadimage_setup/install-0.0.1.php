@@ -17,19 +17,15 @@ $table = $installer->getConnection()->newTable($tableName)
     ),'Status load')
     ->addColumn('sku',Varien_Db_Ddl_Table::TYPE_VARCHAR,255,array(
         'nullable'  =>  false,
-        'default'   =>  0
-    ),'Sku')
-    ->addColumn('image_url',Varien_Db_Ddl_Table::TYPE_VARCHAR,255,array(
+    ),'sku product')
+    ->addColumn('link',Varien_Db_Ddl_Table::TYPE_VARCHAR,255,array(
         'nullable'  =>  false,
-        'default'   =>  null
     ),'Image url')
     ->addColumn('start_datetime',Varien_Db_Ddl_Table::TYPE_DATETIME,null,array(
         'nullable'  =>  false,
-        'default'   =>  null
     ),'Start data_time upload')
     ->addColumn('end_datetime',Varien_Db_Ddl_Table::TYPE_DATETIME,null,array(
-        'nullable'  =>  true,
-        'default'   =>  null
+        'nullable'  =>  false,
     ),'End data_time upload');
 
 $installer->getConnection()->createTable($table);

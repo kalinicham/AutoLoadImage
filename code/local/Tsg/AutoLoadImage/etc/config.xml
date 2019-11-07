@@ -37,6 +37,18 @@
                 </setup>
             </tsg_autoloadimage_setup>
         </resources>
+        <crontab>
+            <jobs>
+                <tsg_autoloadimage_cron>
+                    <schedule>
+                        <cron_expr>*/1 * * * *</cron_expr>
+                    </schedule>
+                    <run>
+                        <model>tsg_autoloadimage/cron::uploadImage</model>
+                    </run>
+                </tsg_autoloadimage_cron>
+            </jobs>
+        </crontab>
     </global>
     <admin>
         <routers>
@@ -50,6 +62,13 @@
         </routers>
     </admin>
     <adminhtml>
+        <layout>
+            <updates>
+                <tsg_autoloadimage>
+                    <file>tsg_import.xml</file>
+                </tsg_autoloadimage>
+            </updates>
+        </layout>
         <events>
             <adminhtml_widget_container_html_before>
                 <observers>

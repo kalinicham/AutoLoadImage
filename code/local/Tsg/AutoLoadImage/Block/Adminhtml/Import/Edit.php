@@ -15,6 +15,7 @@ class Tsg_AutoLoadImage_Block_Adminhtml_Import_Edit extends Mage_Adminhtml_Block
             ->_removeButton('reset')
             ->_updateButton('save','label', $this->__('Import Data'))
             ->_updateButton('save', 'id', 'upload_button');
+
     }
 
 
@@ -25,10 +26,6 @@ class Tsg_AutoLoadImage_Block_Adminhtml_Import_Edit extends Mage_Adminhtml_Block
         $this->_objectId    = 'import_id';
         $this->_blockGroup  = 'tsg_autoloadimage';
         $this->_controller  = 'adminhtml_import';
-    }
-
-    public function getHeaderText()
-    {
-        return Mage::helper('tsg_autoloadimage')->__('Import Image');
+        $this->_headerText  = 'Import Images';
     }
 }
