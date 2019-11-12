@@ -11,6 +11,9 @@ $table = $installer->getConnection()->newTable($tableName)
         'nullable'  =>  false,
         'primary'   =>  true
     ),'Id')
+    ->addColumn('id_product',Varien_Db_Ddl_Table::TYPE_INTEGER,null,array(
+        'nullable'  =>  false,
+    ),'id product')
     ->addColumn('status',Varien_Db_Ddl_Table::TYPE_INTEGER,null,array(
         'nullable'  =>  false,
         'default'   =>  0

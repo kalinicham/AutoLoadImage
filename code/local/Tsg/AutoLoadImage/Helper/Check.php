@@ -2,7 +2,9 @@
 
 class Tsg_AutoLoadImage_Helper_Check
 {
+    protected $catalog = 'tmp';
     protected $filedName = array('sku','link');
+
     /**
      * @param array $headFile
      * @return string
@@ -22,20 +24,21 @@ class Tsg_AutoLoadImage_Helper_Check
         return $nonExist;
     }
 
-    public function checkSku(string $sku): bool
-    {
-        $product = Mage::getModel('catalog/product');
-        $result = $product->getIdBySku($sku);
-        return $result;
-    }
-
+    /**
+     * @param string $link
+     * @return bool
+     */
     public function checkLink(string $link): bool
     {
-        $result = preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $link);
+        $pattern = "/^http(s)?:\/\/[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(\/.*(png|jpeg|jpg))$/i";
+        $result = preg_match($pattern, $link);
         return $result;
     }
 
-    public function checkDir()
+    /**
+     * @return bool
+     */
+    public function checkDir(): bool
     {
         $importCatalog = Mage::getBaseDir('media') . DS . $this->catalog . DS ;
 

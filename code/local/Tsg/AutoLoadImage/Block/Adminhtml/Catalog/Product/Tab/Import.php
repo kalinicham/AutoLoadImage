@@ -3,6 +3,11 @@
 class Tsg_AutoLoadImage_Block_Adminhtml_Catalog_Product_Tab_Import extends Mage_Adminhtml_Block_Widget_Grid
 {
 
+    const QUEUE = 0;
+    const UPLOADED = 1;
+    const ERROR = 2;
+    const RETRY = 3;
+
     public function __construct()
     {
         parent::__construct();
@@ -19,23 +24,6 @@ class Tsg_AutoLoadImage_Block_Adminhtml_Catalog_Product_Tab_Import extends Mage_
     protected function getCurrentAction() {
         return Mage::registry('surprise_block');
     }
-
-  /*  protected function _addColumnFilterToCollection($column)
-    {
-        if ($column->getId() == 'in_category') {
-            $productIds = $this->getSelectedCategory();
-            if ($column->getFilter()->getValue()) {
-                $this->getCollection()->addFieldToFilter('entity_id', array('in' => $productIds));
-            } else {
-                if($productIds) {
-                    $this->getCollection()->addFieldToFilter('entity_id', array('nin' => $productIds));
-                }
-            }
-        } else {
-            parent::_addColumnFilterToCollection($column);
-        }
-        return $this;
-    }*/
 
     public function _prepareCollection() {
         $collection = Mage::getModel('tsg_autoloadimage/import')->getCollection();
@@ -83,10 +71,10 @@ class Tsg_AutoLoadImage_Block_Adminhtml_Catalog_Product_Tab_Import extends Mage_
             'width'     => '20',
             'type'      => 'options',
             'options'   => array(
-                0       => $helper->__('Queue'),
-                1       => $helper->__('Uploaded'),
-                2       => $helper->__('Error'),
-                3       => $helper->__('Retry'),
+                self::QUEUE     => $helper->__('Queue'),
+                self::UPLOADED  => $helper->__('Uploaded'),
+                self::ERROR     => $helper->__('Error'),
+                self::RETRY     => $helper->__('Retry'),
             ),
         ));
 

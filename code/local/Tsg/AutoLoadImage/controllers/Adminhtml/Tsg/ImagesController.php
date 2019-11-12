@@ -14,21 +14,21 @@ class Tsg_AutoLoadImage_Adminhtml_Tsg_ImagesController extends Mage_Adminhtml_Co
         $this->_title($this->__("Import Images"));
         $this->_addContent($this->getLayout()->createBlock('tsg_autoloadimage/adminhtml_import_edit'));
         $this->renderLayout();
+//        Mage::helper('tsg_autoloadimage/check')->uploadImage();
     }
 
     public function startAction()
     {
         $data = $this->getRequest()->getPost();
          if ($data) {
+             /** @var Tsg_AutoLoadImage_Model_Import $importModel */
              $importModel = Mage::getModel('tsg_autoloadimage/import');
              try {
                  $importModel->importSource();
              } catch (Exception $e) {
                  Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
              }
-             $this->_redirectReferer();
-         } else {
-             $this->_redirectReferer();
          }
+        $this->_redirectReferer();
     }
 }
