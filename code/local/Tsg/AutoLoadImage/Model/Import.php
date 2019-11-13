@@ -14,6 +14,7 @@ class Tsg_AutoLoadImage_Model_Import extends Mage_Core_Model_Abstract
         /**
          * @var Tsg_AutoLoadImage_Helper_Check $helperCheck
          * @var Tsg_AutoLoadImage_Helper_Data $helperData
+         * @var Tsg_AutoLoadImage_Model_Import $importData
          * @var Mage_Catalog_Model_Product $product
          */
 
@@ -46,7 +47,6 @@ class Tsg_AutoLoadImage_Model_Import extends Mage_Core_Model_Abstract
         $numberLine = 0;
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $numberLine++;
-            /** @var Tsg_AutoLoadImage_Model_Import $importData */
             $importData = Mage::getModel('tsg_autoloadimage/import');
             $item = 0;
             foreach ($headFile as $value) {
@@ -63,20 +63,22 @@ class Tsg_AutoLoadImage_Model_Import extends Mage_Core_Model_Abstract
                     $importData->save();
                 }else{
                     Mage::getSingleton('adminhtml/session')->addError(
-                        $helperData->__("Error line: $numberLine - The link in the is not an image")
+                        $helperData->__("Error line:$numberLine The link in the is not an image")
                     );
 //                Mage::log("Error line: $numberLine - The link in the is not an image",null,'tsg_import.log');
                 }
             }else{
 
                 Mage::getSingleton('adminhtml/session')->addError(
-                    $helperData->__("Error line: $numberLine - Unknown value $sku")
+                    $helperData->__("Error line: $numberLine Unknown value for SKU: $sku")
                 );
 //                Mage::log("Error line: $numberLine - Unknown value $sku",null,'tsg_import.log');
             }
         }
         fclose($handle);
-        Mage::getSingleton('adminhtml/session')->addSuccess('The file imported.');
+        Mage::getSingleton('adminhtml/session')->addSuccess(
+            $helperData->__("The file imported.")
+        );
     }
 
 }

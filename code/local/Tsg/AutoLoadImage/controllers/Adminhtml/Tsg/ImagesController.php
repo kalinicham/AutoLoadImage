@@ -14,7 +14,6 @@ class Tsg_AutoLoadImage_Adminhtml_Tsg_ImagesController extends Mage_Adminhtml_Co
         $this->_title($this->__("Import Images"));
         $this->_addContent($this->getLayout()->createBlock('tsg_autoloadimage/adminhtml_import_edit'));
         $this->renderLayout();
-//        Mage::helper('tsg_autoloadimage/check')->uploadImage();
     }
 
     public function startAction()

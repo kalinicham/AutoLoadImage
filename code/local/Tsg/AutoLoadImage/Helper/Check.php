@@ -47,11 +47,16 @@ class Tsg_AutoLoadImage_Helper_Check
                 $io = new Varien_Io_File();
                 $io->mkdir($importCatalog);
             } catch (Exception $e) {
-
+                Mage::log($e, null, 'tsg_import_image.log');
                 return false;
             }
         }
 
         return true;
     }
+
+
+
+
+
 }
