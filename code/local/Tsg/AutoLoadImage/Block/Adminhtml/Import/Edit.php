@@ -18,7 +18,6 @@ class Tsg_AutoLoadImage_Block_Adminhtml_Import_Edit extends Mage_Adminhtml_Block
 
     }
 
-
     protected function _construct()
     {
         parent::_construct();

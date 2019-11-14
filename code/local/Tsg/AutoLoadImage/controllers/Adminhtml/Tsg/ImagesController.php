@@ -2,7 +2,6 @@
 
 class Tsg_AutoLoadImage_Adminhtml_Tsg_ImagesController extends Mage_Adminhtml_Controller_Action
 {
-
     public function indexAction()
     {
         $this->_redirect('*/catalog_product/index');
