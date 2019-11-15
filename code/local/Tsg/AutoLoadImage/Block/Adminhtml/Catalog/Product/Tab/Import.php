@@ -50,6 +50,14 @@ class Tsg_AutoLoadImage_Block_Adminhtml_Catalog_Product_Tab_Import extends Mage_
             'width'     => '80'
         ));
 
+        $this->addColumn('size', array(
+            'header'    => $helper->__('Size Image'),
+            'align'     => 'left',
+            'index'     => 'size',
+            'width'     => '80',
+            'renderer'  => 'Tsg_AutoLoadImage_Block_Adminhtml_Catalog_Product_Tab_Renderer_Size'
+        ));
+
         $this->addColumn('start_datetime', array(
             'header'    => $helper->__('Start datetime'),
             'align'     => 'left',

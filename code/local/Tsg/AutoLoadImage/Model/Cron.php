@@ -54,6 +54,7 @@ class Tsg_AutoLoadImage_Model_Cron
                 }
 
                 try {
+                    $item->setSize(filesize($completeFile));
                     $product->addImageToMediaGallery($completeFile, null, true,false);
                     $product->save();
                     $item->setStatus(self::UPLOADED);

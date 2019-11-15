@@ -24,6 +24,10 @@ $table = $installer->getConnection()->newTable($tableName)
     ->addColumn('link',Varien_Db_Ddl_Table::TYPE_VARCHAR,255,array(
         'nullable'  =>  false,
     ),'Image url')
+    ->addColumn('size',Varien_Db_Ddl_Table::TYPE_DECIMAL,'12,2',array(
+        'nullable'  =>  false,
+        'default'   => '0.00',
+    ),'File size')
     ->addColumn('start_datetime',Varien_Db_Ddl_Table::TYPE_DATETIME,null,array(
         'nullable'  =>  false,
     ),'Start data_time upload')
